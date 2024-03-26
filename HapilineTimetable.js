@@ -10,6 +10,7 @@ export class HapilineTimetable {
     this.data = data;
   }
   getTrains(fromstation, tostation) {
+    if (fromstation == tostation) return [];
     return this.data.filter(i => {
       const from = i[fromstation + "_発"];
       const to = i[tostation + "_着"];
