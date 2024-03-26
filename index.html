@@ -29,7 +29,7 @@
 <footer>
 出典: <a href=https://www.hapi-line.co.jp/timetable/>時刻表・運賃｜株式会社ハピラインふくい｜ふくいとあしたの架け橋に。</a><br>
 DATA: → 一部をデータを打ち込み(<a href=https://github.com/code4fukui/hapiline-timetable/blob/main/hapiline-kudari.csv>上り</a>/<a href=https://github.com/code4fukui/hapiline-timetable/blob/main/hapiline-kudari.csv>下り</a>) → <a href=https://github.com/code4fukui/hapiline-timetable/blob/main/make.js>make.js</a> で<a href=https://github.com/code4fukui/hapiline-timetable/blob/main/hapiline-timetable.csv>CSVファイル</a>に加工<br>
-<a href=https://github.com/code4fukui/hapiline-timetable/>data and src on GitHub</a><br>
+APP: <a href=https://github.com/code4fukui/hapiline-timetable/>MIT License by Code for FUKUI</a><br>
 </footer>
 
 <style>
@@ -41,6 +41,9 @@ DATA: → 一部をデータを打ち込み(<a href=https://github.com/code4fuku
   font-weight: bold;
   line-height: 1.8em;
   font-size: 115%;
+}
+.box .trid {
+  font-size: 85%;
 }
 .nowrap {
   white-space: nowrap;
@@ -85,6 +88,7 @@ a {
 <script type="module">
 import { HapilineTimetable } from "./HapilineTimetable.js";
 import { Time } from "https://js.sabae.cc/DateTime.js";
+import { removeHash } from "https://js.sabae.cc/removeHash.js";
 
 const tt = await HapilineTimetable.create();
 
@@ -94,7 +98,6 @@ const showTime = (idbase, fromst, tost) => {
   for (let i = 0; i < 3; i++) {
     const c = document.getElementById(idbase + "n" + (i + 1));
     const tr = trs[i];
-    console.log(tr);
     if (!tr) {
       c.textContent = "";
       continue;
@@ -104,7 +107,7 @@ const showTime = (idbase, fromst, tost) => {
     const dt = (new Time(tot).toMinutes() - new Time(fromt).toMinutes() + 24 * 60) % (24 * 60);
     const rm = new Time(fromt).toSeconds() - nowt.toSeconds();
     //c.textContent = `${tr.ID} ${fromt}→${tot} ${dt}分 あと${Math.floor(rm / 60)}分${rm % 60}秒で出発`;
-    c.textContent = `${fromt}→${tot}(${dt}分) ${Math.floor(rm / 60) + 1}分後 ${tr.ID}`;
+    c.innerHTML = `${fromt}→${tot}(${dt}分) ${Math.floor(rm / 60) + 1}分後 <span class=trid>${tr.ID}</span>`;
   }
 };
 const show = () => {
@@ -115,6 +118,8 @@ const show = () => {
   showTime("box2", to, from);
 };
 
+const initdefault = ["鯖江", "福井"];
+
 const sts = tt.getStations();
 for (const sel of [selfrom, selto]) {
   for (const st of sts) {
@@ -122,15 +127,24 @@ for (const sel of [selfrom, selto]) {
     opt.textContent = st;
     sel.appendChild(opt);
     sel.onchange = () => {
-      from1.textContent = selfrom.value;
-      to1.textContent = selto.value;
-      from2.textContent = selto.value;
-      to2.textContent = selfrom.value;
+      const from = selfrom.value;
+      const to = selto.value;
+      from1.textContent = from;
+      to1.textContent = to;
+      from2.textContent = to;
+      to2.textContent = from;
+
+      if (from == initdefault[0] && to == initdefault[1]) {
+        removeHash();
+      } else {
+        location.hash = [from, to].map(i => encodeURIComponent(i)).join(",");
+      }
     };
   }
 }
-selfrom.value = "鯖江";
-selto.value = "福井";
+const init = location.hash.substring(1).split(",").map(i => decodeURIComponent(i));
+selfrom.value = init[0] || initdefault[0];
+selto.value = init[1] || initdefault[1];
 selfrom.onchange();
 
 setInterval(show, 1000);
