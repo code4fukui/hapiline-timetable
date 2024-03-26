@@ -80,16 +80,20 @@ const tt = await HapilineTimetable.create();
 
 const showTime = (idbase, fromst, tost) => {
   const trs = tt.getNextTrains(fromst, tost, 3);
-  const nowt = new Time().quantizeSeconds()
-  for (let i = 0; i < trs.length; i++) {
-    const tr = trs[i];
+  const nowt = new Time().quantizeSeconds();
+  for (let i = 0; i < 3; i++) {
     const c = document.getElementById(idbase + "n" + (i + 1));
+    const tr = trs[i];
+    if (!tr) {
+      c.textContent = "";
+      continue;
+    }
     const fromt = tr[fromst + "_発"];
     const tot = tr[tost + "_着"];
     const dt = (new Time(tot).toMinutes() - new Time(fromt).toMinutes() + 24 * 60) % (24 * 60);
     const rm = new Time(fromt).toSeconds() - nowt.toSeconds();
     //c.textContent = `${tr.ID} ${fromt}→${tot} ${dt}分 あと${Math.floor(rm / 60)}分${rm % 60}秒で出発`;
-    c.textContent = `${tr.ID} ${fromt}→${tot} 所要時間${dt}分 (${Math.floor(rm / 60)}分後)`;
+    c.textContent = `${tr.ID} ${fromt}→${tot} 所要時間${dt}分 (${Math.floor(rm / 60) + 1}分後)`;
   }
 };
 const show = () => {

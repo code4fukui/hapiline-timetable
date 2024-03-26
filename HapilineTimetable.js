@@ -23,14 +23,14 @@ export class HapilineTimetable {
   }
   getNextTrains(fromstation, tostation, maxlen = 3, nowm) {
     const trs = this.getTrains(fromstation, tostation);
-    const now = nowm || new Time().toMinutes();
+    const now = nowm || new Time().quantizeMinutes().toMinutes();
     const res = trs.filter(i => {
       const from = i[fromstation + "_発"];
       const fromt = new Time(from);
       const d = now - fromt.toMinutes();
       return d <= 0;
     });
-    res.length = maxlen;
+    if (res.length > maxlen) res.length = maxlen;
     return res;
   }
 };
