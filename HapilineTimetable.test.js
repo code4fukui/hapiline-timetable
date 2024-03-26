@@ -64,3 +64,6 @@ Deno.test("getNextTrains", async () => {
   };
   t.assertEquals(tt.getNextTrains("鯖江", "敦賀", 1, new Time("08:20").toMinutes()), [chk]);
 });
+Deno.test("not yet", async () => {
+  t.assertEquals(tt.getStations(), ["福井", "鯖江", "敦賀"]);
+});

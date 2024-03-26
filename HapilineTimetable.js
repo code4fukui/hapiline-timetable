@@ -33,4 +33,15 @@ export class HapilineTimetable {
     if (res.length > maxlen) res.length = maxlen;
     return res;
   }
+  getStations() {
+    const v = this.data[0];
+    const res = new Set();
+    for (const name in v) {
+      if (name.endsWith("_発") || name.endsWith("_着")) {
+        const st = name.substring(0, name.length - 2);
+        res.add(st);
+      }
+    }
+    return Array.from(res);
+  }
 };
