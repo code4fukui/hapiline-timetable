@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><link rel="icon" href="data:">
-<title>ハピラインふくい 鯖江駅発着電車</title>
+<title>ハピラインふくい 鯖江駅発電車</title>
 </head><body>
-<h1>ハピラインふくい 鯖江駅発着電車</h1>
+<h1>ハピラインふくい 鯖江駅発電車</h1>
 
 <span id=spannow></span>
 
@@ -22,7 +22,7 @@
 <hr>
 <footer>
 出典: <a href=https://www.hapi-line.co.jp/timetable/>時刻表・運賃｜株式会社ハピラインふくい｜ふくいとあしたの架け橋に。</a><br>
-DATA: → 一部をデータを打ち込み(<a href=https://github.com/code4fukui/hapiline-timetable/hapiline-nobori.csv>上り</a>/<a href=https://github.com/code4fukui/hapiline-timetable/hapiline-kudari.csv>下り</a>) → <a href=https://github.com/code4fukui/hapiline-timetable/make.js>make.js</a> で<a href=https://github.com/code4fukui/hapiline-timetable/hapiline-timetable.csv>CSVファイル</a>に加工<br>
+DATA: → 一部をデータを打ち込み(<a href=https://github.com/code4fukui/hapiline-timetable/blob/main/hapiline-kudari.csv>上り</a>/<a href=https://github.com/code4fukui/hapiline-timetable/blob/main/hapiline-kudari.csv>下り</a>) → <a href=https://github.com/code4fukui/hapiline-timetable/blob/main/make.js>make.js</a> で<a href=https://github.com/code4fukui/hapiline-timetable/blob/main/hapiline-timetable.csv>CSVファイル</a>に加工<br>
 <a href=https://github.com/code4fukui/hapiline-timetable/>data and src on GitHub</a><br>
 </footer>
 
@@ -65,13 +65,16 @@ const tt = await HapilineTimetable.create();
 
 const showTime = (idbase, fromst, tost) => {
   const trs = tt.getNextTrains(fromst, tost, 3);
+  const nowt = new Time().quantizeSeconds()
   for (let i = 0; i < trs.length; i++) {
     const tr = trs[i];
     const c = document.getElementById(idbase + "n" + (i + 1));
     const fromt = tr[fromst + "_発"];
     const tot = tr[tost + "_着"];
     const dt = (new Time(tot).toMinutes() - new Time(fromt).toMinutes() + 24 * 60) % (24 * 60);
-    c.textContent = `${tr.ID} ${fromt}→${tot} ${dt}分`;
+    const rm = new Time(fromt).toSeconds() - nowt.toSeconds();
+    //c.textContent = `${tr.ID} ${fromt}→${tot} ${dt}分 あと${Math.floor(rm / 60)}分${rm % 60}秒で出発`;
+    c.textContent = `${tr.ID} ${fromt}→${tot} 所要時間${dt}分 (${Math.floor(rm / 60)}分後)`;
   }
 };
 const show = () => {
