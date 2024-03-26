@@ -1,0 +1,86 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><link rel="icon" href="data:">
+<title>ハピラインふくい 鯖江駅発着電車</title>
+</head><body>
+<h1>ハピラインふくい 鯖江駅発着電車</h1>
+
+<span id=spannow></span>
+
+<div class=box>
+鯖江駅→福井駅<br>
+1: <span id=box1n1></span><br>
+2: <span id=box1n2></span><br>
+3: <span id=box1n3></span><br>
+</div>
+
+<div class=box>
+鯖江駅→敦賀駅<br>
+1: <span id=box2n1></span><br>
+2: <span id=box2n2></span><br>
+3: <span id=box2n3></span><br>
+</div>
+
+<hr>
+<footer>
+出典: <a href=https://www.hapi-line.co.jp/timetable/>時刻表・運賃｜株式会社ハピラインふくい｜ふくいとあしたの架け橋に。</a><br>
+DATA: → 一部をデータを打ち込み(<a href=https://github.com/code4fukui/hapiline-timetable/hapiline-nobori.csv>上り</a>/<a href=https://github.com/code4fukui/hapiline-timetable/hapiline-kudari.csv>下り</a>) → <a href=https://github.com/code4fukui/hapiline-timetable/make.js>make.js</a> で<a href=https://github.com/code4fukui/hapiline-timetable/hapiline-timetable.csv>CSVファイル</a>に加工<br>
+<a href=https://github.com/code4fukui/hapiline-timetable/>data and src on GitHub</a><br>
+</footer>
+
+<style>
+.box {
+  margin: .5em;
+  padding: .5em;
+  background-color: green;
+  color: white;
+  font-weight: bold;
+  line-height: 1.8em;
+  font-size: 120%;
+}
+body {
+  margin: 0;
+}
+h1 {
+  background-color: green;
+  color: white;
+  margin: 0;
+  padding: .5em;
+}
+#spannow {
+  display: inline-block;
+  padding: .5em 1.5em;
+  margin: 0;
+  font-size: 130%;
+}
+footer {
+  padding: .5em;
+}
+</style>
+
+
+<script type="module">
+import { HapilineTimetable } from "./HapilineTimetable.js";
+import { Time } from "https://js.sabae.cc/DateTime.js";
+
+const tt = await HapilineTimetable.create();
+
+const showTime = (idbase, fromst, tost) => {
+  const trs = tt.getNextTrains(fromst, tost, 3);
+  for (let i = 0; i < trs.length; i++) {
+    const tr = trs[i];
+    const c = document.getElementById(idbase + "n" + (i + 1));
+    const fromt = tr[fromst + "_発"];
+    const tot = tr[tost + "_着"];
+    const dt = (new Time(tot).toMinutes() - new Time(fromt).toMinutes() + 24 * 60) % (24 * 60);
+    c.textContent = `${tr.ID} ${fromt}→${tot} ${dt}分`;
+  }
+};
+const show = () => {
+  spannow.textContent = `現在時刻 ${new Time().quantizeSeconds().toString()}`;
+  showTime("box1", "鯖江", "福井");
+  showTime("box2", "鯖江", "敦賀");
+};
+setInterval(show, 1000);
+show();
+
+</script>
+</body></html>
