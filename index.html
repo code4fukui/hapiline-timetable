@@ -36,7 +36,7 @@ APP: <a href=https://github.com/code4fukui/hapiline-timetable/>MIT License by Co
 .box {
   margin: .5em;
   padding: .5em;
-  background-color: green;
+  background-color: #97b404;
   color: white;
   font-weight: bold;
   line-height: 1.8em;
@@ -61,7 +61,7 @@ body {
   margin: 0;
 }
 h1 {
-  background-color: green;
+  background-color: #97b404;
   color: white;
   margin: 0;
   padding: .5em;
@@ -102,12 +102,12 @@ const showTime = (idbase, fromst, tost) => {
       c.textContent = "";
       continue;
     }
-    const fromt = tr[fromst + "_発"];
-    const tot = tr[tost + "_着"];
-    const dt = (new Time(tot).toMinutes() - new Time(fromt).toMinutes() + 24 * 60) % (24 * 60);
-    const rm = new Time(fromt).toSeconds() - nowt.toSeconds();
+    const fromt = new Time(tr[fromst + "_発"]);
+    const tot = new Time(tr[tost + "_着"]);
+    const dt = (tot.toMinutes() - fromt.toMinutes() + 24 * 60) % (24 * 60);
+    const rm = fromt.toSeconds() - nowt.toSeconds();
     //c.textContent = `${tr.ID} ${fromt}→${tot} ${dt}分 あと${Math.floor(rm / 60)}分${rm % 60}秒で出発`;
-    c.innerHTML = `${fromt}→${tot}(${dt}分) ${Math.floor(rm / 60) + 1}分後 <span class=trid>${tr.ID}</span>`;
+    c.innerHTML = `${fromt.toStringMin()}→${tot.toStringMin()}(${dt}分) ${Math.floor(rm / 60) + 1}分後 <span class=trid>${tr.ID}</span>`;
   }
 };
 const show = () => {
