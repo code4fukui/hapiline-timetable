@@ -1,36 +1,28 @@
 <!DOCTYPE html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><link rel="icon" href="data:">
-<title>ハピラインふくい 鯖江駅発電車</title>
+<title>発車カウントダウン - ハピラインふくい</title>
 </head><body>
-<h1>ハピラインふくい 鯖江駅発電車</h1>
+<h1>発車カウントダウン<div>ハピラインふくい</div></h1>
 
-<span id=spannow></span>
+<div class=center>
+  <span id=spannow></span>
 
-<div class=box>
-鯖江駅→福井駅<br>
-1: <span id=box1n1></span><br>
-2: <span id=box1n2></span><br>
-3: <span id=box1n3></span><br>
+  <span class=nowrap>
+  <select id=selfrom></select>→<select id=selto><select>
+  </span>
 </div>
 
 <div class=box>
-福井駅→鯖江駅<br>
-1: <span id=box3n1></span><br>
-2: <span id=box3n2></span><br>
-3: <span id=box3n3></span><br>
+<span id=from1></span>→<span id=to1></span><br>
+<span id=box1n1></span><br>
+<span id=box1n2></span><br>
+<span id=box1n3></span><br>
 </div>
 
 <div class=box>
-鯖江駅→敦賀駅<br>
-1: <span id=box2n1></span><br>
-2: <span id=box2n2></span><br>
-3: <span id=box2n3></span><br>
-</div>
-
-<div class=box>
-敦賀駅→鯖江駅<br>
-1: <span id=box4n1></span><br>
-2: <span id=box4n2></span><br>
-3: <span id=box4n3></span><br>
+<span id=from2></span>→<span id=to2></span><br>
+<span id=box2n1></span><br>
+<span id=box2n2></span><br>
+<span id=box2n3></span><br>
 </div>
 
 <hr>
@@ -48,7 +40,18 @@ DATA: → 一部をデータを打ち込み(<a href=https://github.com/code4fuku
   color: white;
   font-weight: bold;
   line-height: 1.8em;
+  font-size: 115%;
+}
+.nowrap {
+  white-space: nowrap;
+}
+.center {
+  text-align: center;
+}
+select {
   font-size: 120%;
+  margin: .5em;
+  padding: .2em;
 }
 body {
   font-family: sans-serif;
@@ -59,15 +62,22 @@ h1 {
   color: white;
   margin: 0;
   padding: .5em;
+  text-align: center;
+}
+h1 div {
+  font-size: 80%;
 }
 #spannow {
   display: inline-block;
   padding: .5em 1.5em;
   margin: 0;
-  font-size: 130%;
+  font-size: 140%;
 }
 footer {
   padding: .5em;
+}
+a {
+  color: gray !important;
 }
 </style>
 
@@ -84,6 +94,7 @@ const showTime = (idbase, fromst, tost) => {
   for (let i = 0; i < 3; i++) {
     const c = document.getElementById(idbase + "n" + (i + 1));
     const tr = trs[i];
+    console.log(tr);
     if (!tr) {
       c.textContent = "";
       continue;
@@ -93,16 +104,35 @@ const showTime = (idbase, fromst, tost) => {
     const dt = (new Time(tot).toMinutes() - new Time(fromt).toMinutes() + 24 * 60) % (24 * 60);
     const rm = new Time(fromt).toSeconds() - nowt.toSeconds();
     //c.textContent = `${tr.ID} ${fromt}→${tot} ${dt}分 あと${Math.floor(rm / 60)}分${rm % 60}秒で出発`;
-    c.textContent = `${tr.ID} ${fromt}→${tot} 所要時間${dt}分 (${Math.floor(rm / 60) + 1}分後)`;
+    c.textContent = `${fromt}→${tot}(${dt}分) ${Math.floor(rm / 60) + 1}分後 ${tr.ID}`;
   }
 };
 const show = () => {
   spannow.textContent = `現在時刻 ${new Time().quantizeSeconds().toString()}`;
-  showTime("box1", "鯖江", "福井");
-  showTime("box2", "鯖江", "敦賀");
-  showTime("box3", "福井", "鯖江");
-  showTime("box4", "敦賀", "鯖江");
+  const from = selfrom.value;
+  const to = selto.value;
+  showTime("box1", from, to);
+  showTime("box2", to, from);
 };
+
+const sts = tt.getStations();
+for (const sel of [selfrom, selto]) {
+  for (const st of sts) {
+    const opt = document.createElement("option");
+    opt.textContent = st;
+    sel.appendChild(opt);
+    sel.onchange = () => {
+      from1.textContent = selfrom.value;
+      to1.textContent = selto.value;
+      from2.textContent = selto.value;
+      to2.textContent = selfrom.value;
+    };
+  }
+}
+selfrom.value = "鯖江";
+selto.value = "福井";
+selfrom.onchange();
+
 setInterval(show, 1000);
 show();
 
