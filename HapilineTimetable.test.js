@@ -76,3 +76,29 @@ Deno.test("getNextTrains", async () => {
 Deno.test("not yet", async () => {
   t.assertEquals(tt.getStations(), ["福井", "鯖江", "武生", "敦賀"]);
 });
+Deno.test("info", async () => {
+  const keys = [
+    "id",
+    "lat",
+    "lng",
+    "name",
+    "kana",
+    "previd",
+    "nextid",
+    "住所",
+    "窓口営業時間",
+    "券売機",
+    "ＩＣ改札",
+    "JRきっぷ販売",
+    "多目的トイレ",
+    "エレベーター",
+    "コインロッカー",
+    "駐車場",
+    "時刻表URL",
+    "出典URL",
+  ];
+  t.assertEquals(Object.keys(tt.getStationInfo("鯖江")), keys);
+});
+Deno.test("kana", async () => {
+  t.assertEquals(tt.getStationInfo("鯖江").kana, "さばえ");
+});

@@ -4,10 +4,12 @@ import { Time } from "https://js.sabae.cc/DateTime.js";
 export class HapilineTimetable {
   static async create() {
     const data = await CSV.fetchJSON("hapiline-timetable.csv");
-    return new HapilineTimetable(data);
+    const info = await CSV.fetchJSON("hapiline-station.csv");
+    return new HapilineTimetable(data, info);
   }
-  constructor(data) {
+  constructor(data, info) {
     this.data = data;
+    this.info = info;
   }
   getTrains(fromstation, tostation) {
     if (fromstation == tostation) return [];
@@ -44,5 +46,8 @@ export class HapilineTimetable {
       }
     }
     return Array.from(res);
+  }
+  getStationInfo(name) {
+    return this.info.find(i => i.name == name);
   }
 };
