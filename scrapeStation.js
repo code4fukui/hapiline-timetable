@@ -63,7 +63,7 @@ for (const d of data) {
   console.log(d2);
   delete d.出典URL;
   Object.assign(d, d2);
-  d.時刻表URL = "https://trainlocation.hapi-line.co.jp/timetable/" + d.id;
+  //d.時刻表URL = "https://trainlocation.hapi-line.co.jp/timetable/" + d.id;
   d.出典URL = url;
 }
 await Deno.writeTextFile("hapiline-station.csv", CSV.stringify(data));

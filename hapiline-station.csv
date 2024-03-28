@@ -1,19 +1,19 @@
-﻿id,lat,lng,name,kana,previd,nextid,住所,窓口営業時間,券売機,ＩＣ改札,JRきっぷ販売,多目的トイレ,エレベーター,コインロッカー,駐車場,時刻表URL,出典URL
-Tsuruga,35.645352,136.076256,敦賀,つるが,,Minami-Imajo,福井県敦賀市鉄輪町1丁目1-24,7:00～19:30（お客様カウンター）,○ ※JR券売機でハピラインのきっぷ購入可,○,－,○ ※市,○,○ ※市,－ ※周辺駐車場をご利用ください,https://trainlocation.hapi-line.co.jp/timetable/Tsuruga,https://www.hapi-line.co.jp/route/station/archives/1
-Minami-Imajo,35.757637,136.184735,南今庄,みなみいまじょう,Tsuruga,Imajo,福井県南条郡南越前町南今庄7字10番地,－（無人駅）,－,○,－,○ ※町,－,－,－ ※周辺駐車場をご利用ください,https://trainlocation.hapi-line.co.jp/timetable/Minami-Imajo,https://www.hapi-line.co.jp/route/station/archives/2
-Imajo,35.773359,136.198582,今庄,いまじょう,Minami-Imajo,Yunoo,福井県南条郡南越前町今庄74字6番地,－（無人駅）,○,○,－,－,－,－,－ ※周辺駐車場をご利用ください,https://trainlocation.hapi-line.co.jp/timetable/Imajo,https://www.hapi-line.co.jp/route/station/archives/3
-Yunoo,35.803817,136.193944,湯尾,ゆのお,Imajo,Nanjo,福井県南条郡南越前町湯尾19字3番地,－（無人駅）,－,○,－,○ ※町,－,－,－ ※周辺駐車場をご利用ください,https://trainlocation.hapi-line.co.jp/timetable/Yunoo,https://www.hapi-line.co.jp/route/station/archives/4
-Nanjo,35.83252,136.19318,南条,なんじょう,Yunoo,Oshio,福井県南条郡南越前町西大道第19号42番地,－（無人駅）,○,○,－,－,－,－,－ ※周辺駐車場をご利用ください,https://trainlocation.hapi-line.co.jp/timetable/Nanjo,https://www.hapi-line.co.jp/route/station/archives/5
-Oshio,35.866629,136.166307,王子保,おうしお,Nanjo,Takefu,福井県越前市四郎丸町第55号4番,－（無人駅）,○,○,－,－,－,－,－ ※周辺駐車場をご利用ください,https://trainlocation.hapi-line.co.jp/timetable/Oshio,https://www.hapi-line.co.jp/route/station/archives/6
-Takefu,35.902417,136.17104,武生,たけふ,Oshio,Sabae,福井県越前市府中1丁目1番1号,7:00～19:30,○,○,○,○,○,○,－ ※周辺駐車場をご利用ください,https://trainlocation.hapi-line.co.jp/timetable/Takefu,https://www.hapi-line.co.jp/route/station/archives/8
-Sabae,35.943376,136.188594,鯖江,さばえ,Takefu,Kita-Sabae,福井県鯖江市日ノ出町1番2号,7:00～19:30,○,○,○,○,○,○,○ ※月極,https://trainlocation.hapi-line.co.jp/timetable/Sabae,https://www.hapi-line.co.jp/route/station/archives/10
-Kita-Sabae,35.971571,136.19869,北鯖江,きたさばえ,Sabae,Odoro,福井県鯖江市下河端町61番,－（無人駅）,－※2024年3月中に設置予定,○,－,－,－,－,－ ※周辺駐車場をご利用ください,https://trainlocation.hapi-line.co.jp/timetable/Kita-Sabae,https://www.hapi-line.co.jp/route/station/archives/11
-Odoro,36.00886,136.216491,大土呂,おおどろ,Kita-Sabae,Echizen-Hanando,福井県福井市半田町第17号6番地,－（無人駅）,○,○,－,－,－,－,－ ※周辺駐車場をご利用ください,https://trainlocation.hapi-line.co.jp/timetable/Odoro,https://www.hapi-line.co.jp/route/station/archives/12
-Echizen-Hanando,36.038777,136.217702,越前花堂,えちぜんはなんどう,Odoro,Fukui,福井県福井市花堂中1丁目1番,－（無人駅）,○,○,－,－,－,－,－ ※周辺駐車場をご利用ください,https://trainlocation.hapi-line.co.jp/timetable/Echizen-Hanando,https://www.hapi-line.co.jp/route/station/archives/13
-Fukui,36.062157,136.223365,福井,ふくい,Echizen-Hanando,Morita,福井県福井市中央1丁目1番1号,7:00～20:00,○,○,－,○,○,○,－ ※周辺駐車場をご利用ください,https://trainlocation.hapi-line.co.jp/timetable/Fukui,https://www.hapi-line.co.jp/route/station/archives/14
-Morita,36.109363,136.222642,森田,もりた,Fukui,Harue,福井県福井市栄町第10号46番地,－（無人駅）,○,○,－,－,－,－,○ ※月極,https://trainlocation.hapi-line.co.jp/timetable/Morita,https://www.hapi-line.co.jp/route/station/archives/16
-Harue,36.129131,136.227853,春江,はるえ,Morita,Maruoka,福井県坂井市春江町中筋1-1,－（無人駅）,○,○,－,－,－,－,－ ※周辺駐車場をご利用ください,https://trainlocation.hapi-line.co.jp/timetable/Harue,https://www.hapi-line.co.jp/route/station/archives/17
-Maruoka,36.162581,136.233682,丸岡,まるおか,Harue,Awaraonsen,福井県坂井市坂井町上新庄第46号24番地,－（無人駅）,○,○,－,○ ※市,－,○ ※市,○ ※月極,https://trainlocation.hapi-line.co.jp/timetable/Maruoka,https://www.hapi-line.co.jp/route/station/archives/18
-Awaraonsen,36.214657,136.234646,芦原温泉,あわらおんせん,Maruoka,Hosorogi,福井県あわら市春宮1丁目12番-15地,7:00～19:30,○,○,－,○ ※市,○,○,－ ※周辺駐車場をご利用ください,https://trainlocation.hapi-line.co.jp/timetable/Awaraonsen,https://www.hapi-line.co.jp/route/station/archives/19
-Hosorogi,36.241108,136.256469,細呂木,ほそろぎ,Awaraonsen,Ushinoya,福井県あわら市青ノ木第40号43番地,－（無人駅）,－,○,－,○ ※市,－,－,－ ※周辺駐車場をご利用ください,https://trainlocation.hapi-line.co.jp/timetable/Hosorogi,https://www.hapi-line.co.jp/route/station/archives/20
-Ushinoya,36.25848,136.281834,牛ノ谷,うしのや,Hosorogi,,福井県あわら市牛ノ谷第36号11番地,－（無人駅）,－,○,－,○ ※市,－,－,○,https://trainlocation.hapi-line.co.jp/timetable/Ushinoya,https://www.hapi-line.co.jp/route/station/archives/21
+﻿id,lat,lng,name,kana,previd,nextid,住所,窓口営業時間,券売機,ＩＣ改札,JRきっぷ販売,多目的トイレ,エレベーター,コインロッカー,駐車場,出典URL
+Tsuruga,35.645352,136.076256,敦賀,つるが,,Minami-Imajo,福井県敦賀市鉄輪町1丁目1-24,7:00～19:30（お客様カウンター）,○ ※JR券売機でハピラインのきっぷ購入可,○,－,○ ※市,○,○ ※市,－ ※周辺駐車場をご利用ください,https://www.hapi-line.co.jp/route/station/archives/1
+Minami-Imajo,35.757637,136.184735,南今庄,みなみいまじょう,Tsuruga,Imajo,福井県南条郡南越前町南今庄7字10番地,－（無人駅）,－,○,－,○ ※町,－,－,－ ※周辺駐車場をご利用ください,https://www.hapi-line.co.jp/route/station/archives/2
+Imajo,35.773359,136.198582,今庄,いまじょう,Minami-Imajo,Yunoo,福井県南条郡南越前町今庄74字6番地,－（無人駅）,○,○,－,－,－,－,－ ※周辺駐車場をご利用ください,https://www.hapi-line.co.jp/route/station/archives/3
+Yunoo,35.803817,136.193944,湯尾,ゆのお,Imajo,Nanjo,福井県南条郡南越前町湯尾19字3番地,－（無人駅）,－,○,－,○ ※町,－,－,－ ※周辺駐車場をご利用ください,https://www.hapi-line.co.jp/route/station/archives/4
+Nanjo,35.83252,136.19318,南条,なんじょう,Yunoo,Oshio,福井県南条郡南越前町西大道第19号42番地,－（無人駅）,○,○,－,－,－,－,－ ※周辺駐車場をご利用ください,https://www.hapi-line.co.jp/route/station/archives/5
+Oshio,35.866629,136.166307,王子保,おうしお,Nanjo,Takefu,福井県越前市四郎丸町第55号4番,－（無人駅）,○,○,－,－,－,－,－ ※周辺駐車場をご利用ください,https://www.hapi-line.co.jp/route/station/archives/6
+Takefu,35.902417,136.17104,武生,たけふ,Oshio,Sabae,福井県越前市府中1丁目1番1号,7:00～19:30,○,○,○,○,○,○,－ ※周辺駐車場をご利用ください,https://www.hapi-line.co.jp/route/station/archives/8
+Sabae,35.943376,136.188594,鯖江,さばえ,Takefu,Kita-Sabae,福井県鯖江市日ノ出町1番2号,7:00～19:30,○,○,○,○,○,○,○ ※月極,https://www.hapi-line.co.jp/route/station/archives/10
+Kita-Sabae,35.971571,136.19869,北鯖江,きたさばえ,Sabae,Odoro,福井県鯖江市下河端町61番,－（無人駅）,－※2024年3月中に設置予定,○,－,－,－,－,－ ※周辺駐車場をご利用ください,https://www.hapi-line.co.jp/route/station/archives/11
+Odoro,36.00886,136.216491,大土呂,おおどろ,Kita-Sabae,Echizen-Hanando,福井県福井市半田町第17号6番地,－（無人駅）,○,○,－,－,－,－,－ ※周辺駐車場をご利用ください,https://www.hapi-line.co.jp/route/station/archives/12
+Echizen-Hanando,36.038777,136.217702,越前花堂,えちぜんはなんどう,Odoro,Fukui,福井県福井市花堂中1丁目1番,－（無人駅）,○,○,－,－,－,－,－ ※周辺駐車場をご利用ください,https://www.hapi-line.co.jp/route/station/archives/13
+Fukui,36.062157,136.223365,福井,ふくい,Echizen-Hanando,Morita,福井県福井市中央1丁目1番1号,7:00～20:00,○,○,－,○,○,○,－ ※周辺駐車場をご利用ください,https://www.hapi-line.co.jp/route/station/archives/14
+Morita,36.109363,136.222642,森田,もりた,Fukui,Harue,福井県福井市栄町第10号46番地,－（無人駅）,○,○,－,－,－,－,○ ※月極,https://www.hapi-line.co.jp/route/station/archives/16
+Harue,36.129131,136.227853,春江,はるえ,Morita,Maruoka,福井県坂井市春江町中筋1-1,－（無人駅）,○,○,－,－,－,－,－ ※周辺駐車場をご利用ください,https://www.hapi-line.co.jp/route/station/archives/17
+Maruoka,36.162581,136.233682,丸岡,まるおか,Harue,Awaraonsen,福井県坂井市坂井町上新庄第46号24番地,－（無人駅）,○,○,－,○ ※市,－,○ ※市,○ ※月極,https://www.hapi-line.co.jp/route/station/archives/18
+Awaraonsen,36.214657,136.234646,芦原温泉,あわらおんせん,Maruoka,Hosorogi,福井県あわら市春宮1丁目12番-15地,7:00～19:30,○,○,－,○ ※市,○,○,－ ※周辺駐車場をご利用ください,https://www.hapi-line.co.jp/route/station/archives/19
+Hosorogi,36.241108,136.256469,細呂木,ほそろぎ,Awaraonsen,Ushinoya,福井県あわら市青ノ木第40号43番地,－（無人駅）,－,○,－,○ ※市,－,－,－ ※周辺駐車場をご利用ください,https://www.hapi-line.co.jp/route/station/archives/20
+Ushinoya,36.25848,136.281834,牛ノ谷,うしのや,Hosorogi,,福井県あわら市牛ノ谷第36号11番地,－（無人駅）,－,○,－,○ ※市,－,－,○,https://www.hapi-line.co.jp/route/station/archives/21
