@@ -25,6 +25,10 @@
 <span id=box2n3></span><br>
 </div>
 
+<div class=acontainer>
+<a class=amap href=map.html>駅マップ</a>
+</div>
+
 <hr>
 <footer>
 出典: <a href=https://www.hapi-line.co.jp/timetable/>時刻表・運賃｜株式会社ハピラインふくい</a> / <a href=https://www.hapi-line.co.jp/route/station/>路線・駅情報｜株式会社ハピラインふくい</a><br>
@@ -79,6 +83,20 @@ h1 div {
   padding: .5em 1.5em;
   margin: 0;
   font-size: 140%;
+}
+.acontainer {
+  text-align: center;
+}
+.amap {
+  display: inline-block;
+  padding: .5em 1em;
+  margin: .5em;
+  font-size: 120%;
+  font-weight: bold;
+  background-color: pink;
+  color: #333 !important;
+  text-decoration: none;
+  border-radius: .5em;
 }
 footer {
   padding: .5em;
@@ -140,6 +158,7 @@ for (const sel of [selfrom, selto]) {
       to1.textContent = to;
       from2.textContent = to;
       to2.textContent = from;
+      show();
 
       const frominfo = tt.getStationInfo(from);
       const toinfo = tt.getStationInfo(to);
