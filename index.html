@@ -7,19 +7,19 @@
   <span id=spannow></span>
 
   <span class=nowrap>
-  <select id=selfrom></select>→<select id=selto><select>
+  <select id=selfrom></select>→<select id=selto><select> <span id=spanfare></span>
   </span>
 </div>
 
 <div class=box>
-<span id=from1></span>→<span id=to1></span><br>
+<ruby><span id=from1></span><rt id=from1ruby></rt></ruby>→<ruby><span id=to1></span><rt id=to1ruby></rt></ruby><br>
 <span id=box1n1></span><br>
 <span id=box1n2></span><br>
 <span id=box1n3></span><br>
 </div>
 
 <div class=box>
-<span id=from2></span>→<span id=to2></span><br>
+<ruby><span id=from2></span><rt id=from2ruby></rt></ruby>→<ruby><span id=to2></span><rt id=to2ruby></rt></ruby><br>
 <span id=box2n1></span><br>
 <span id=box2n2></span><br>
 <span id=box2n3></span><br>
@@ -44,6 +44,9 @@ APP: <a href=https://github.com/code4fukui/hapiline-timetable/>MIT License by Co
 }
 .box .trid {
   font-size: 85%;
+}
+.box ruby {
+  font-size: 120%;
 }
 .nowrap {
   white-space: nowrap;
@@ -87,10 +90,13 @@ a {
 
 <script type="module">
 import { HapilineTimetable } from "./HapilineTimetable.js";
+import { HapilineFare } from "./HapilineFare.js";
 import { Time } from "https://js.sabae.cc/DateTime.js";
 import { removeHash } from "https://js.sabae.cc/removeHash.js";
+import { addComma } from "https://js.sabae.cc/addComma.js";
 
 const tt = await HapilineTimetable.create();
+const fare = await HapilineFare.create();
 
 const showTime = (idbase, fromst, tost) => {
   const trs = tt.getNextTrains(fromst, tost, 3);
@@ -133,6 +139,23 @@ for (const sel of [selfrom, selto]) {
       to1.textContent = to;
       from2.textContent = to;
       to2.textContent = from;
+
+      const frominfo = tt.getStationInfo(from);
+      const toinfo = tt.getStationInfo(to);
+
+      const fromkana = frominfo.kana;
+      const tokana = toinfo.kana;
+      from1ruby.textContent = fromkana;
+      to1ruby.textContent = tokana;
+      from2ruby.textContent = tokana;
+      to2ruby.textContent = fromkana;
+
+      from1.onclick = to2.onclick = () => open(frominfo.出典URL);
+      from2.onclick = to1.onclick = () => open(toinfo.出典URL);
+
+
+      const n = fare.getFare(from, to);
+      spanfare.textContent = n ? addComma(n) + "円" : "";
 
       if (from == initdefault[0] && to == initdefault[1]) {
         removeHash();
