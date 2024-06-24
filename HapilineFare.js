@@ -1,8 +1,8 @@
 import { CSV } from "https://code4fukui.github.io/CSV/CSV.js";
 
 export class HapilineFare {
-  static async create() {
-    const fare = await CSV.fetch("hapiline-fare_regular.csv");
+  static async create(base = "./") {
+    const fare = await CSV.fetch(base + "hapiline-fare_regular.csv");
     return new HapilineFare(fare);
   }
   constructor(fare) {

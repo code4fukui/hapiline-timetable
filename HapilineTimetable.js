@@ -2,9 +2,9 @@ import { CSV } from "https://code4fukui.github.io/CSV/CSV.js";
 import { Time } from "https://js.sabae.cc/DateTime.js";
 
 export class HapilineTimetable {
-  static async create() {
-    const data = await CSV.fetchJSON("hapiline-timetable.csv");
-    const info = await CSV.fetchJSON("hapiline-station.csv");
+  static async create(base = "./") {
+    const data = await CSV.fetchJSON(base + "hapiline-timetable.csv");
+    const info = await CSV.fetchJSON(base + "hapiline-station.csv");
     return new HapilineTimetable(data, info);
   }
   constructor(data, info) {
